@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <servlet>
+    <description></description>
+    <display-name>home</display-name>
+    <servlet-name>home</servlet-name>
+    <servlet-class>fr.eni.demo.HomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>home</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <display-name>demo-response</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>versgoogle</display-name>
+    <servlet-name>versgoogle</servlet-name>
+    <servlet-class>fr.eni.demo.GoogleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>versgoogle</servlet-name>
+    <url-pattern>/versgoogle</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjouterArticleServlet</display-name>
+    <servlet-name>AjouterArticleServlet</servlet-name>
+    <servlet-class>fr.eni.demo.AjouterArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjouterArticleServlet</servlet-name>
+    <url-pattern>/articles/ajouter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListeArticleServlet</display-name>
+    <servlet-name>ListeArticleServlet</servlet-name>
+    <servlet-class>fr.eni.demo.ListeArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListeArticleServlet</servlet-name>
+    <url-pattern>/articles</url-pattern>
+  </servlet-mapping>
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404.html</location>
+  </error-page>
+
+</web-app>
