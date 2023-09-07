@@ -2,7 +2,7 @@
 <%@page import="fr.eni.ecole.bo.Article"%>
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <% List<Article> articles = (List<Article>) request.getAttribute("articles"); %>
 <!doctype html>
 <html lang="fr">
@@ -57,7 +57,7 @@
     								out.print("<td> "+article.getId()+" </td>");
     								out.print("<td> "+article.getName()+" </td>");
     								out.print("<td> %s </td>".formatted(article.getDateCreated().toString()));
-    								out.print("<td> %d </td>".formatted(article.getPrice()));
+    								out.print("<td> %.2f </td>".formatted(article.getPrice()));
     								out.print("</tr>");
     							}    						
     						%>
