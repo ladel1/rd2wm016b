@@ -37,7 +37,7 @@
     	
     	<main class="row">
     		<div class="row text-center mt-4">
-    			<h1>Détails article</h1>
+    			<h1>blablabalbalbalablabla</h1>
     		</div>
     		<div class="row mt-4">
     			<div class="col-6 offset-3">
