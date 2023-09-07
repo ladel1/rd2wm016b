@@ -1,8 +1,9 @@
+<%@page import="java.util.List"%>
 <%@page import="fr.eni.ecole.bo.Article"%>
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% Article article = (Article) request.getAttribute("article"); %>
+<% List<Article> articles = (List<Article>) request.getAttribute("articles"); %>
 <!doctype html>
 <html lang="fr">
   <head>
@@ -50,12 +51,16 @@
     						</tr>
     					</thead>
     					<tbody>
-    						<tr>
-    							<td><%=article.getId() %></td>
-    							<td><%=article.getName() %></td>
-    							<td><%=article.getDateCreated()%></td>
-    							<td><%=article.getPrice() %></td>
-    						</tr>
+    						<% 
+    							for( Article article:articles ){
+    								out.print("<tr>");
+    								out.print("<td> "+article.getId()+" </td>");
+    								out.print("<td> "+article.getName()+" </td>");
+    								out.print("<td> %s </td>".formatted(article.getDateCreated().toString()));
+    								out.print("<td> %d </td>".formatted(article.getPrice()));
+    								out.print("</tr>");
+    							}    						
+    						%>
     					</tbody>
     				</table>
     			</div>

@@ -30,13 +30,11 @@
     <url-pattern>/clients</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>articles/details</display-name>
-    <servlet-name>articles/details</servlet-name>
+    <servlet-name>articles_details</servlet-name>
     <servlet-class>fr.eni.ecole.ihm.DetailsArticleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>articles/details</servlet-name>
+    <servlet-name>articles_details</servlet-name>
     <url-pattern>/articles/details</url-pattern>
   </servlet-mapping>
 </web-app>
