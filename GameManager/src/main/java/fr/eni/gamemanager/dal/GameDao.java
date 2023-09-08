@@ -11,4 +11,5 @@ public interface GameDao {
 	List<Game> findAll();
 	void modify(Game game);
 	void remove(int id);
+	List<Game> findByName(String query);
 }

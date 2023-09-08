@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.eni.gamemanager.bo.Game;
 import fr.eni.gamemanager.dal.DaoFactory;
+import fr.eni.gamemanager.dal.GameDao;
 
 public class GameManager {
 	// début Singleton
@@ -14,32 +15,31 @@ public class GameManager {
 		return instance;
 	}
 	// Fin Singleton
-	
+	private GameDao gameDao = DaoFactory.getGameDao();
 	// début la logique métier
 	public Game recupUnJeu(int id) {
-		return DaoFactory.getGameDao()
-						 .findOne(id);
+		return gameDao.findOne(id);
 	}
 	
 	public List<Game> recupTousLesJeux() {
-		return DaoFactory.getGameDao()
-						 .findAll();
+		return gameDao.findAll();
 	}
 	
 	public void ajouterUnJeu(Game game) {
+		
 		// datas validation !!
-		DaoFactory.getGameDao()
-				  .save(game);				  	
+		gameDao.save(game);				  	
 	}
 	public void modifierUnJeu(Game game) {
 		// datas validation !!
-		DaoFactory.getGameDao()
-		.modify(game);				  	
+		gameDao.modify(game);				  	
 	}
 	
 	public void supprimerUnJeu(int id) {
-		DaoFactory.getGameDao()
-				  .remove(id);
+		gameDao.remove(id);
+	}
+	public List<Game> rechercheUnJeu(String query) {
+		return  gameDao.findByName(query) ;
 	}
 	
 	// finde la logique métier

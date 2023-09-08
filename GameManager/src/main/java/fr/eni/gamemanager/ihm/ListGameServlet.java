@@ -16,7 +16,12 @@ public class ListGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Game> games = GameManager.getInstance().recupTousLesJeux();
+		List<Game> games = null;
+		if(request.getParameter("q")!=null) {
+			games = GameManager.getInstance().rechercheUnJeu(request.getParameter("q"));
+		}else {
+			games = GameManager.getInstance().recupTousLesJeux();
+		}		
 		request.setAttribute("games", games);
 		request.getRequestDispatcher("/WEB-INF/pages/games.jsp")
 		       .forward(request, response);

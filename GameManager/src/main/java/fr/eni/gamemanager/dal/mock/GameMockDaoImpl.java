@@ -2,6 +2,7 @@ package fr.eni.gamemanager.dal.mock;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import fr.eni.gamemanager.bo.Game;
@@ -18,12 +19,9 @@ public class GameMockDaoImpl implements GameDao {
 		gameLst.add( new Game(4, "NBA 2K24", "EA", "Sport", 30, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0") );
 	}
 	
-	public void blabalbalab() {
-		System.out.println("blabalbablabs");
-	}
-	
 	@Override
 	public void save(Game game) {
+		game.setId(gameLst.size()+1);
 		gameLst.add(game);
 	}
 
@@ -53,6 +51,17 @@ public class GameMockDaoImpl implements GameDao {
 	public void remove(int id) {
 		Game game = findOne(id);
 		gameLst.remove(game);
+	}
+
+	@Override
+	public List<Game> findByName(String query) {
+		List<Game> newListGames = new ArrayList<Game>();
+		for (Game game : gameLst) {
+			if(game.getName().toLowerCase().contains(query.toLowerCase()) ) {
+				newListGames.add(game);
+			}
+		}
+		return newListGames;
 	}
 
 }
