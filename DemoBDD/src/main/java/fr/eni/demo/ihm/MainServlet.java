@@ -14,6 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import fr.eni.demo.dal.jdbc.ConnectionProvider;
+
 @WebServlet("")// racine 
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,16 +24,15 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// start connection
 		response.setContentType("text/html;charset=UTF-8");
-		try {
-			Context context = new InitialContext();
-			DataSource datasource = (DataSource) context.lookup("java:comp/env/jdbc/pool_cnx");
-			Connection connection =  datasource.getConnection();			
-			response.getWriter().print("<h1> Connected 😁 </h1>");
-		} catch (NamingException | SQLException e) {
-			response.getWriter().print("<h1> Not Connected 😒 </h1>");
+		
+		// Try with resources ou try avec des ressources
+		
+		try(Connection connection = ConnectionProvider.getConnection()){
+			response.getWriter().print("<h1>Connected</h1>");
+		}catch (SQLException e) {
+			response.getWriter().print("<h1>Not connected</h1>");
 			e.printStackTrace();
 		}
-		
 		
 		
 	}
