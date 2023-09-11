@@ -78,11 +78,14 @@
 						  <label for="version" class="form-label">Version:</label>
 						  <input type="text" class="form-control" readonly="readonly" value="<%=game.getVersion() %>" id="version" >
 						</div>
-						<div class="mb-3 text-center mt-5">
-							<a class="btn btn-info"  ><i class="fa-solid fa-pen"></i></a>
-							<a class="btn btn-primary" href="<%= request.getContextPath() %>/jeux/ajouter" ><i class="fa-solid fa-plus"></i></a>
-							<a class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-						</div>
+						<form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce jeu ?')" >											
+							<div class="mb-3 text-center mt-5">
+								<a class="btn btn-info" href="<%= request.getContextPath() %>/jeux/modifier" ><i class="fa-solid fa-pen"></i></a>
+								<a class="btn btn-primary" href="<%= request.getContextPath() %>/jeux/ajouter" ><i class="fa-solid fa-plus"></i></a>
+								<button type="submit" name="id" value="<%=game.getId() %>" 
+								class="btn btn-danger" ><i class="fa-solid fa-trash"></i></button>
+							</div>
+						</form>
 					</div>
 				</div>			
 			</div>

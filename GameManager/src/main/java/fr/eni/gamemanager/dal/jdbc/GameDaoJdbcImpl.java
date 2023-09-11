@@ -18,6 +18,8 @@ public class GameDaoJdbcImpl implements GameDao {
 	private static final String SELECT_ALL = "SELECT * FROM games";
 	private static final String SELECT_ONE = "SELECT * FROM games WHERE id = ?";
 	private static final String SAVE = "INSERT games (name,company,category,price,releaseDate,age,format,version) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String DELETE_ONE = "DELETE games WHERE id = ?";
+	
 	
 	@Override
 	public void save(Game game) {
@@ -95,8 +97,16 @@ public class GameDaoJdbcImpl implements GameDao {
 	}
 
 	@Override
-	public void remove(int id) {
-		// TODO Auto-generated method stub
+	public void remove(int id) {		
+		try (
+				Connection connection = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = connection.prepareStatement(DELETE_ONE);	
+			) {
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		}catch( SQLException e ) {
+			e.printStackTrace();
+		}
 		
 	}
 
