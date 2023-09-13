@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
+  <context-param>
+  	<param-name>WEB_APP_NAME</param-name>
+  	<param-value>Démo Context Application</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>ADMIN_EMAIL</param-name>
+  	<param-value>support@exemple.com</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>SECRET_KEY</param-name>
+  	<param-value>fjdg65fd4g6gdf54@hgq*</param-value>
+  </context-param>
+</web-app>
