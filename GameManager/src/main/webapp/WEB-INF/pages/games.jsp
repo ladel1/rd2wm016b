@@ -1,9 +1,6 @@
-<%@page import="fr.eni.gamemanager.bo.Game"%>
-<%@page import="java.util.List"%>
-<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% List<Game> games = (List<Game>) request.getAttribute("games");  %>    
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css" />
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/assets/css/style.css" />
 	<title>Liste de jeux</title>
 </head>
 <body>
@@ -26,13 +23,13 @@
 			    <div class="collapse navbar-collapse" id="navbarNav">
 			      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			        <li class="nav-item">
-			          <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+			          <a class="nav-link active" aria-current="page" href="${ pageContext.request.contextPath }">Accueil</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="<%= request.getContextPath() %>/jeux/ajouter">Ajouter un jeu</a>
+			          <a class="nav-link" href="${ pageContext.request.contextPath }/jeux/ajouter">Ajouter un jeu</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="<%= request.getContextPath() %>/jeux">Liste de jeux</a>
+			          <a class="nav-link" href="${ pageContext.request.contextPath }/jeux">Liste de jeux</a>
 			        </li>
 			      </ul>
 	              <form class="d-flex" method="GET" action="" >
@@ -62,18 +59,21 @@
 								</tr>
 							</thead>
 							<tbody>
-								<% for( Game game: games){ %>
+								<c:forEach var="game" items="${ games }" >
 									<tr>
-										<td><%=game.getId() %></td>
-										<td><%=game.getName() %></td>
-										<td><%=game.getCompany() %></td>
-										<td><%=game.getCategory() %></td>
-										<td><%=game.getPrice() %></td>
+										<td>${ game.id }</td>
+										<td>${ game.name }</td>
+										<td>${ game.company }</td>
+										<td>${ game.category }</td>
+										<td>${ game.price }</td>
 										<td>
-											<a class="btn btn-dark" href="<%= request.getContextPath() %>/jeux/détails?id=<%=game.getId() %>"><i class="fa-solid fa-eye"></i></a> 
+											<a class="btn btn-dark" 
+												href="${ pageContext.request.contextPath }/jeux/détails?id=${ game.id }">
+												<i class="fa-solid fa-eye"></i>
+											</a> 
 										</td>
 									</tr>
-								<% } %>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -81,7 +81,7 @@
 			</div>
 		</main>
 		<footer class="row text-center text-white bg-dark">
-			<p class="my-4" >GameManager &copy; <%= LocalDate.now().getYear() %> 😊</p>
+			<p class="my-4" >GameManager &copy; ${ annee }  😊</p>
 		</footer>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

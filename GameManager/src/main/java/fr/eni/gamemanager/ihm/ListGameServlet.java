@@ -1,6 +1,7 @@
 package fr.eni.gamemanager.ihm;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.gamemanager.bll.GameManager;
@@ -23,6 +24,7 @@ public class ListGameServlet extends HttpServlet {
 			games = GameManager.getInstance().recupTousLesJeux();
 		}		
 		request.setAttribute("games", games);
+		request.setAttribute("annee", LocalDate.now().getYear());
 		request.getRequestDispatcher("/WEB-INF/pages/games.jsp")
 		       .forward(request, response);
 	}
