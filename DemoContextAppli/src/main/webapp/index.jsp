@@ -9,5 +9,6 @@
 <body>
 <h1> <%= application.getInitParameter("WEB_APP_NAME") %> </h1>
 <p><%=application.getInitParameter("ADMIN_EMAIL") %></p>
+<% application.setAttribute("CONFIG", "n'importe quoi"); %>
 </body>
 </html>
