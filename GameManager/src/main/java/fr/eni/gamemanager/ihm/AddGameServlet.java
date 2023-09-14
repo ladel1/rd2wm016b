@@ -16,7 +16,11 @@ public class AddGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		if(request.getSession().getAttribute("user")==null) {
+			response.sendRedirect(request.getContextPath()+"/connexion");
+			return;
+		}
 		// afficher la page d'ajout
 		request.getRequestDispatcher("/WEB-INF/pages/game-add.jsp")
 			   .forward(request, response);

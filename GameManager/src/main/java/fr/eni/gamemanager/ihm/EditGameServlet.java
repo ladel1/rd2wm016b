@@ -16,6 +16,10 @@ public class EditGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("user")==null) {
+			response.sendRedirect(request.getContextPath()+"/connexion");
+			return;
+		}		
 		try {
 			// récupérer le param dans url
 			int id = Integer.parseInt( request.getParameter("id")  );

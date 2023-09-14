@@ -1,6 +1,7 @@
 package fr.eni.gamemanager.dal;
 import fr.eni.gamemanager.dal.jdbc.GameDaoJdbcImpl;
-import fr.eni.gamemanager.dal.mock.GameMockDaoImpl;
+import fr.eni.gamemanager.dal.jdbc.UserDaoJdbcImpl;
+
 
 public class DaoFactory {
 
@@ -10,5 +11,9 @@ public class DaoFactory {
 		//return new GameMockDaoImpl();
 		return new GameDaoJdbcImpl();
 	} 
+	
+	public static UserDao getUserDao() {
+		return new UserDaoJdbcImpl();
+	}
 	
 }

@@ -29,12 +29,19 @@
 			        <li class="nav-item">
 			          <a class="nav-link" href="${ pageContext.request.contextPath }/jeux">Liste de jeux</a>
 			        </li>
-			        <li class="nav-item">
-			          <a class="nav-link" href="${ pageContext.request.contextPath }/connexion">Connexion</a>
-			        </li>	
- 		        	<li class="nav-item">
-			          <a class="nav-link" href="${ pageContext.request.contextPath }/inscription">Inscription</a>
-			        </li>	
+			        <c:if test="${ user == null }">			        
+				        <li class="nav-item">
+				          <a class="nav-link" href="${ pageContext.request.contextPath }/connexion">Connexion</a>
+				        </li>	
+	 		        	<li class="nav-item">
+				          <a class="nav-link" href="${ pageContext.request.contextPath }/inscription">Inscription</a>
+				        </li>	
+			        </c:if>
+			        <c:if test="${ user != null }">	
+    				    <li class="nav-item">
+				          <a class="nav-link" href="${ pageContext.request.contextPath }/deconnexion">Déconnexion</a>
+				        </li>
+			        </c:if>
 			      </ul>
 	              <form class="d-flex" method="GET" action="" >
 			        <input class="form-control me-2" type="search" name="q" placeholder="Recherche..." aria-label="Search">

@@ -37,6 +37,10 @@ public class DetailsGameServlet extends HttpServlet {
 	// Supprimer un jeu	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("user")==null) {			
+			response.sendRedirect(request.getContextPath()+"/connexion?err=1");
+			return;
+		}
 		try {
 			// récupérer le param dans url
 			int id = Integer.parseInt( request.getParameter("id")  );			
