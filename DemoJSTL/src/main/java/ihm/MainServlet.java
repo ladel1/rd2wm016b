@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import bo.Personne;
 import bo.Voiture;
 
 @WebServlet("")// accueil
@@ -21,7 +22,14 @@ public class MainServlet extends HttpServlet {
 				new  Voiture("Bugatti", "Veyron", "XX-554-DR", 420),
 				new  Voiture("Bugatti", "Chiron", "XX-554-DR", 450)
 				);
+		List<Personne> personnes = List.of(
+				new Personne("Hugo", "Maisel", 10),
+				new Personne("Pierre", "Dupont", 20),
+				new Personne("Gaelle", "De lor", 25),
+				new Personne("Lucas", "Duval", 15)
+				);
 		request.setAttribute("voitures", voitures);
+		request.setAttribute("personnes", personnes);
 		request.getRequestDispatcher("/WEB-INF/home.jsp")
 		.forward(request, response);
 	}
