@@ -10,7 +10,12 @@ import java.io.IOException;
 import fr.eni.gamemanager.bll.GameManager;
 import fr.eni.gamemanager.bo.Game;
 
-@WebServlet("/jeux/détails")
+@WebServlet(
+		urlPatterns = {
+				"/jeux/détails",
+				"/jeux/supprimer"
+		}
+		)
 public class DetailsGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +42,6 @@ public class DetailsGameServlet extends HttpServlet {
 	// Supprimer un jeu	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getSession().getAttribute("user")==null) {			
-			response.sendRedirect(request.getContextPath()+"/connexion?err=1");
-			return;
-		}
 		try {
 			// récupérer le param dans url
 			int id = Integer.parseInt( request.getParameter("id")  );			

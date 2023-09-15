@@ -40,7 +40,7 @@
 				  <label for="version" class="form-label">Version:</label>
 				  <input type="text" class="form-control" readonly="readonly" value="${ game.version }" id="version" >
 				</div>
-				<form method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce jeu ?')" >											
+				<form method="POST" action="${ pageContext.request.contextPath }/jeux/supprimer" onsubmit="return confirm('Voulez-vous vraiment supprimer ce jeu ?')" >											
 					<div class="mb-3 text-center mt-5">
 						<a class="btn btn-info" href="${ pageContext.request.contextPath }/jeux/modifier?id=${ game.id }" ><i class="fa-solid fa-pen"></i></a>
 						<a class="btn btn-primary" href="${ pageContext.request.contextPath }/jeux/ajouter" ><i class="fa-solid fa-plus"></i></a>

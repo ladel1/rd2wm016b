@@ -8,6 +8,7 @@ import fr.eni.gamemanager.bo.User;
 import fr.eni.gamemanager.dal.DaoFactory;
 import fr.eni.gamemanager.dal.UserDao;
 import fr.eni.gamemanager.dal.jdbc.exception.JDBCException;
+import fr.eni.gamemanager.helper.PasswordEncoder;
 
 public class UserManager {
 	// singleton
@@ -29,6 +30,10 @@ public class UserManager {
 	public void inscription(User user) throws JDBCException, BLLException {
 		// validation !!!!!!!!
 		checkFields(user);
+		user.setPassword( PasswordEncoder.hashPassword(
+						user.getPassword()// password no hashé
+					)
+				);
 		userDao.save(user);		
 	}
 	
@@ -44,11 +49,11 @@ public class UserManager {
 		//if(!user.getPassword().equals(user.getConfirmpassword))
 	}
 
-	public User login(String username,String password) {
+	public User login(String username,String password) {	
 		User user = userDao.findByUsername(username);		
 		if(user!=null 
 				&& user.getUsername().equals(username)
-				&& user.getPassword().equals(password) ) {
+				&&  PasswordEncoder.verifyPassword(password, user.getPassword()) ) {
 			return user;
 		}		
 		return null;
@@ -81,7 +86,7 @@ public class UserManager {
 		
 		User user = fp.getUser();
 		
-		user.setPassword(newPassword);
+		user.setPassword( PasswordEncoder.hashPassword(newPassword) );
 		
 		userDao.update(user);
 		
