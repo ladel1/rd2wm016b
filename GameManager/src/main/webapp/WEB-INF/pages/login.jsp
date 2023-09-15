@@ -8,6 +8,11 @@
 		</div>		
 		<div class="row mt-5">
 			<div class="col-8 offset-2">
+				<c:if test="${ !empty success }">
+					<div class="alert alert-success">
+						${ success }
+					</div>
+				</c:if>			
 				<c:if test="${ !empty error }">
 					<div class="alert alert-danger">
 						${ error }
@@ -26,6 +31,9 @@
 					<div class="mb-3">
 					  <label for="password" class="form-label">Password</label>
 					  <input type="password" class="form-control" name="password" id="password" >
+					</div>
+					<div class="mb-3">
+						<a href="${ pageContext.request.contextPath }/forget-password" >Forget password</a>
 					</div>
 					<button class="btn btn-primary" role="button" type="submit" >Connexion</button>					
 				</form>

@@ -6,12 +6,22 @@ public class User {
 
 	private int id;
 	private String username;
+	//private String confirmPassword;
 	private String password;
 	private String email;
 	private LocalDate dateCreated;
 	
 	
 	public User() { }
+
+	
+
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+
 
 
 	public User(int id, String username, String password, String email, LocalDate dateCreated) {
@@ -22,6 +32,15 @@ public class User {
 		this.email = email;
 		this.dateCreated = dateCreated;
 	}
+	
+	
+
+
+	public User(int id, String password) {	
+		this.id = id;
+		this.password = password;
+	}
+
 
 
 	public int getId() {
