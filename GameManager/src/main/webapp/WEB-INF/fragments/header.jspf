@@ -29,7 +29,7 @@
 			        <li class="nav-item">
 			          <a class="nav-link" href="${ pageContext.request.contextPath }/jeux">Liste de jeux</a>
 			        </li>
-			        <c:if test="${ user == null }">			        
+			        <c:if test="${ passport == null }">			        
 				        <li class="nav-item">
 				          <a class="nav-link" href="${ pageContext.request.contextPath }/connexion">Connexion</a>
 				        </li>	
@@ -37,7 +37,7 @@
 				          <a class="nav-link" href="${ pageContext.request.contextPath }/inscription">Inscription</a>
 				        </li>	
 			        </c:if>
-			        <c:if test="${ user != null }">	
+			        <c:if test="${ passport != null }">	
     				    <li class="nav-item">
 				          <a class="nav-link" href="${ pageContext.request.contextPath }/deconnexion">Déconnexion</a>
 				        </li>
