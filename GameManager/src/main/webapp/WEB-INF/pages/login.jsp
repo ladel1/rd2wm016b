@@ -32,6 +32,12 @@
 					  <label for="password" class="form-label">Password</label>
 					  <input type="password" class="form-control" name="password" id="password" >
 					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="checkbox" name="remember_me" id="remember_me">
+					  <label class="form-check-label" for="remember_me">
+					    Se souvenir de moi
+					  </label>
+					</div>			
 					<div class="mb-3">
 						<a href="${ pageContext.request.contextPath }/forget-password" >Forget password</a>
 					</div>

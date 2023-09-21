@@ -2,6 +2,7 @@ package fr.eni.gamemanager.ihm;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,13 +24,13 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		boolean rememberMe = request.getParameter("remember_me")!=null;
 		
+			
 		User user = UserManager.getInstance().login(username, password);
 		
 		if(user == null) {
@@ -39,6 +40,11 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			user.setPassword("");
 			session.setAttribute("user", user);
+			if(rememberMe) { // rememberMe qui n'est pas sécurisé
+				Cookie cookieSession = new Cookie("JSESSIONID", session.getId());
+				cookieSession.setMaxAge(60*60*24*30);
+				response.addCookie(cookieSession);
+			}
 			response.sendRedirect(request.getContextPath()+"/jeux/ajouter");
 		}
 		
