@@ -46,7 +46,7 @@ public class EditGameServlet extends HttpServlet {
 			String format =   request.getParameter("format");
 			String version =   request.getParameter("version");			
 			// create Game instance
-			Game game = new Game(id, name, company, cat, price, releaseDate, pegi, format, version);
+			Game game = new Game(id, name, company, cat, price, releaseDate, pegi, format, version,"");
 			
 			// modifier
 			GameManager.getInstance().modifierUnJeu(game);

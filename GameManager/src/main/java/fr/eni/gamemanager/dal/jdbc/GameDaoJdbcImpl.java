@@ -17,7 +17,7 @@ public class GameDaoJdbcImpl implements GameDao {
 	// Requetes SQL
 	private static final String SELECT_ALL = "SELECT * FROM games";
 	private static final String SELECT_ONE = "SELECT * FROM games WHERE id = ?";
-	private static final String SAVE = "INSERT games (name,company,category,price,releaseDate,age,format,version) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String SAVE = "INSERT games (name,company,category,price,releaseDate,age,format,version,img) VALUES (?,?,?,?,?,?,?,?,?)";
 	private static final String DELETE_ONE = "DELETE games WHERE id = ?";
 	private static final String UPDATE = "UPDATE games SET name=?,company=?,category=?,price=?,releaseDate=?,age=?,format=?,version=? WHERE id = ?";
 	private static final String FIND_BY_NAME = "SELECT * FROM games WHERE name LIKE ? ";
@@ -38,6 +38,7 @@ public class GameDaoJdbcImpl implements GameDao {
 			pstmt.setInt(6, game.getAge());
 			pstmt.setString(7, game.getFormat());
 			pstmt.setString(8, game.getVersion());
+			pstmt.setString(9, game.getJaquette());
 			// executer la requete
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
@@ -58,7 +59,8 @@ public class GameDaoJdbcImpl implements GameDao {
 								rs.getString("company"), rs.getString("category"), 
 								rs.getFloat("price"), rs.getDate("releaseDate").toLocalDate(), 
 								rs.getInt("age"), rs.getString("format"), 
-								rs.getString("version"));				
+								rs.getString("version"),
+								rs.getString("img"));				
 			}			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -81,7 +83,8 @@ public class GameDaoJdbcImpl implements GameDao {
 								rs.getString("company"), rs.getString("category"), 
 								rs.getFloat("price"), rs.getDate("releaseDate").toLocalDate(), 
 								rs.getInt("age"), rs.getString("format"), 
-								rs.getString("version"))
+								rs.getString("version"),
+								rs.getString("img"))
 						
 						);				
 			}
@@ -148,7 +151,8 @@ public class GameDaoJdbcImpl implements GameDao {
 								rs.getString("company"), rs.getString("category"), 
 								rs.getFloat("price"), rs.getDate("releaseDate").toLocalDate(), 
 								rs.getInt("age"), rs.getString("format"), 
-								rs.getString("version"))
+								rs.getString("version"),
+								rs.getString("img"))
 						
 						);				
 			}

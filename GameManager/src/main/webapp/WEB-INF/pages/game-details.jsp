@@ -9,6 +9,9 @@
 		<div class="row mt-5">
 			<div class="col-4 offset-4">
 				<div class="mb-3">
+				 <img class="img-fluid" src="${ pageContext.request.contextPath }/Images/${ game.jaquette }" alt="${ game.jaquette }" >
+				</div>
+				<div class="mb-3">
 				  <label for="name" class="form-label">Nom:</label>
 				  <input type="text" class="form-control" readonly="readonly" value="${ game.name }" id="name" >
 				</div>

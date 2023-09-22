@@ -13,10 +13,10 @@ public class GameMockDaoImpl implements GameDao {
 	private List<Game> gameLst = new ArrayList<Game>();
 	
 	public GameMockDaoImpl() {
-		gameLst.add( new Game(1, "FIFA 2023", "EA", "Sport", 30, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0") );
-		gameLst.add( new Game(2, "Call of Duty: Modern Warfare II", "Activision", "Action", 40, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0") );
-		gameLst.add( new Game(3, "The Last of Us Remastered", "EA", "Aventure", 25, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0") );
-		gameLst.add( new Game(4, "NBA 2K24", "EA", "Sport", 30, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0") );
+		gameLst.add( new Game(1, "FIFA 2023", "EA", "Sport", 30, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0","") );
+		gameLst.add( new Game(2, "Call of Duty: Modern Warfare II", "Activision", "Action", 40, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0","") );
+		gameLst.add( new Game(3, "The Last of Us Remastered", "EA", "Aventure", 25, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0","") );
+		gameLst.add( new Game(4, "NBA 2K24", "EA", "Sport", 30, LocalDate.of(2022, 9, 1), 9, "DVD", "1.0.0","") );
 	}
 	
 	@Override

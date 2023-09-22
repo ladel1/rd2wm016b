@@ -13,12 +13,14 @@ public class Game { // POJO
 	private int age;
 	private String format;
 	private String version;
+	private String jaquette;
 	// constructeur
 	
 	public Game() {}
 	
 	public Game(int id, String name, String company, String category, float price, LocalDate releaseDate, int age,
-			String format, String version) {
+			String format, String version, String jaquette) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.company = company;
@@ -28,8 +30,9 @@ public class Game { // POJO
 		this.age = age;
 		this.format = format;
 		this.version = version;
+		this.jaquette = jaquette;
 	}
-	// getters & setters
+
 	public int getId() {
 		return id;
 	}
@@ -102,11 +105,21 @@ public class Game { // POJO
 		this.version = version;
 	}
 
+	public String getJaquette() {
+		return jaquette;
+	}
+
+	public void setJaquette(String jaquette) {
+		this.jaquette = jaquette;
+	}
+
 	@Override
 	public String toString() {
 		return "Game [id=" + id + ", name=" + name + ", company=" + company + ", category=" + category + ", price="
 				+ price + ", releaseDate=" + releaseDate + ", age=" + age + ", format=" + format + ", version="
-				+ version + "]";
+				+ version + ", jaquette=" + jaquette + "]";
 	}
+	
+	
 	
 }

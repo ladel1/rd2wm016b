@@ -8,7 +8,7 @@
 		</div>
 		<div class="row mt-5">
 			<div class="col-4 offset-4">
-			    <form action="" method="POST" >					    
+			    <form action="" method="POST" enctype="multipart/form-data" >					    
 					<div class="mb-3">
 					  <label for="name" class="form-label">Nom:</label>
 					  <input type="text" class="form-control" name="name" id="name" >
@@ -40,6 +40,10 @@
 					<div class="mb-3">
 					  <label for="version" class="form-label">Version:</label>
 					  <input type="text" class="form-control" name="version"  id="version" >
+					</div>
+					<div class="mb-3">
+					  <label for="jaquette" class="form-label">Jaquette:</label>
+					  <input class="form-control" type="file" id="jaquette" name="jaquette">
 					</div>
 					<div class="mb-3 text-center mt-5">
 						<button class="btn btn-primary" type="submit" ><i class="fa-regular fa-floppy-disk"></i></button>
