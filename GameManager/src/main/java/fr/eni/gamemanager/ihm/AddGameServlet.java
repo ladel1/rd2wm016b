@@ -84,10 +84,11 @@ public class AddGameServlet extends HttpServlet {
      */
     private String getFileName( Part part ) {
         for ( String content : part.getHeader( "content-disposition" ).split( ";" ) ) {
-            if ( content.trim().startsWith( "filename" ) )
+            
+        	if ( content.trim().startsWith( "filename" ) )
                 return content.substring( content.indexOf( "=" ) + 2, content.length() - 1 );
         }
-        return "Default.file";
+        return "Default.jpg";
     }
 
 }
